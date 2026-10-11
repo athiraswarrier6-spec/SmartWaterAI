@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartWaterAI | Water Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">💧 SmartWaterAI</div>
+        <p>AI-Powered Rainwater Harvesting Management</p>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <h1>Smart Water Management Dashboard</h1>
+            <p>Estimate rainwater collection and manage your tank efficiently.</p>
+        </section>
+
+        <section class="panel">
+            <h2>Enter Your Water Details</h2>
+            
+<div class="form-grid" style="margin-bottom: 20px;">
+    <label>
+        Select State
+        <select id="stateCode" required>
+            <option value="32" selected>Kerala</option>
+            <option value="1">Jammu And Kashmir</option>
+            <option value="2">Himachal Pradesh</option>
+            <option value="3">Punjab</option>
+            <option value="4">Chandigarh</option>
+            <option value="5">Uttarakhand</option>
+            <option value="6">Haryana</option>
+            <option value="7">Delhi</option>
+            <option value="8">Rajasthan</option>
+            <option value="9">Uttar Pradesh</option>
+            <option value="10">Bihar</option>
+            <option value="11">Sikkim</option>
+            <option value="12">Arunachal Pradesh</option>
+            <option value="13">Nagaland</option>
+            <option value="14">Manipur</option>
+            <option value="15">Mizoram</option>
+            <option value="16">Tripura</option>
+            <option value="17">Meghalaya</option>
+            <option value="18">Assam</option>
+            <option value="19">West Bengal</option>
+            <option value="20">Jharkhand</option>
+            <option value="21">Odisha</option>
+            <option value="22">Chhattisgarh</option>
+            <option value="23">Madhya Pradesh</option>
+            <option value="24">Gujarat</option>
+            <option value="27">Maharashtra</option>
+            <option value="28">Andhra Pradesh</option>
+            <option value="29">Karnataka</option>
+            <option value="30">Goa</option>
+            <option value="31">Lakshadweep</option>
+            <option value="33">Tamil Nadu</option>
+            <option value="34">Puducherry</option>
+            <option value="35">Andaman And Nicobar Islands</option>
+            <option value="36">Telangana</option>
+            <option value="37">Ladakh</option>
+            <option value="38">The Dadra And Nagar Haveli And Daman And Diu</option>
+        </select>
+    </label>
+
+    <label>
+        Prediction Date
+        <input type="date" id="forecastDate" required>
+    </label>
+</div>
+
+<button type="button" id="predictRainfallButton">
+    Predict Rainfall
+</button>
+<p id="predictionStatus" role="status"></p>
+
+
+            <form id="waterForm">
+                <div class="form-grid">
+                    <label>
+                        Predicted Rainfall (mm)
+                        <input type="number" id="rainfall" min="0"
+                               step="any" value="20" required>
+                    </label>
+
+                    <label>
+                        Roof Area (m²)
+                        <input type="number" id="roof" min="0"
+                               step="any" value="100" required>
+                    </label>
+
+                    <label>
+                        Runoff Coefficient (0–1)
+                        <input type="number" id="runoff" min="0" max="1"
+                               step="any" value="0.8" required>
+                    </label>
+
+                    <label>
+                        Current Water (litres)
+                        <input type="number" id="currentWater" min="0"
+                               step="any" value="1000" required>
+                    </label>
+
+                    <label>
+                        Tank Capacity (litres)
+                        <input type="number" id="capacity" min="0"
+                               step="any" value="5000" required>
+                    </label>
+                </div>
+
+                <button type="submit" id="analyzeButton">
+                    Analyze Water
+                </button>
+            </form>
+
+            <p id="status" role="status"></p>
+        </section>
+
+        <section id="results" class="results" hidden>
+            <h2>Water Analysis Results</h2>
+            
+<div class="tank-section">
+    <h3>Water Tank Visualization</h3>
+    <div class="tank">
+        <div id="tankWater" class="tank-water"></div>
+        <span id="tankLabel" class="tank-label">0%</span>
+    </div>
+    <p>Current tank storage level</p>
+</div>
+
+
+            <div class="cards">
+                <article class="result-card">
+                    <p>Expected Rainwater</p>
+                    <h3 id="incoming">—</h3>
+                    <span>litres</span>
+                </article>
+
+                <article class="result-card">
+                    <p>Water After Rain</p>
+                    <h3 id="stored">—</h3>
+                    <span>litres</span>
+                </article>
+
+                <article class="result-card">
+                    <p>Tank Level</p>
+                    <h3 id="level">—</h3>
+                    <div class="progress-track">
+                        <div id="progress" class="progress"></div>
+                    </div>
+                </article>
+
+                <article class="result-card">
+                    <p>Overflow</p>
+                    <h3 id="overflow">—</h3>
+                    <span>litres</span>
+                </article>
+            </div>
+
+            <div class="panel recommendation">
+                <h2>Agent Decision</h2>
+                <p id="decision">—</p>
+                <p id="action"></p>
+
+                <h2>Water-Saving Recommendation</h2>
+                <p id="recommendation">—</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>SmartWaterAI | Rainwater Harvesting Management Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
