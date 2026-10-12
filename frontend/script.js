@@ -21,7 +21,7 @@ waterForm.addEventListener("submit", async function (event) {
     analyzeButton.textContent = "Analyzing...";
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/analyze", {
+        const response = await fetch("https://smartwaterai.onrender.com/api/analyze", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -111,7 +111,7 @@ predictRainfallButton.addEventListener("click", async function () {
 
     try {
         const response = await fetch(
-            "http://127.0.0.1:8000/api/predict-rainfall",
+           "https://smartwaterai.onrender.com/api/predict-rainfall",
             {
                 method: "POST",
                 headers: {
